@@ -1,10 +1,6 @@
 #!/bin/python3
 
 
-arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 40, 60, 400, 8000, 8001, 8002, 8003, 8004, 9000, 10000, 13000]
-x = 8003
-
-
 def binary_search(arr, low, high, x):
     if high >= low:
         mid = (high + low) // 2
@@ -22,9 +18,17 @@ def binary_search(arr, low, high, x):
         return -1
 
 
+def main():
+    arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 40, 60, 400, 8000, 8001, 8002, 8003, 8004, 9000, 10000, 13000]
+    x = 8003
+    return binary_search(arr, 0, len(arr) - 1, x)
+
+
 if __name__ == '__main__':
-    result = binary_search(arr, 0, len(arr) - 1, x)
+    result = main()
+
     if result != -1:
         print("Element is at index", str(result))
+
     else:
         print("Element is not in the array")
