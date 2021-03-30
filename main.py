@@ -1,27 +1,44 @@
 #!/bin/python3
+from random import randint
 
 
-def binary_search(arr, low, high, x):
+def generate_and_sort_array():
+    x = 0
+    arr = []
+
+    while x < 1000:
+        arr.append(randint(1, 1000))
+        x += 1
+
+    arr = sorted(arr)
+    print(f'Updated List {arr}')
+
+    return arr
+
+
+def binary_search(arr, low, high, search):
     if high >= low:
         mid = (high + low) // 2
 
-        if arr[mid] == x:
+        if arr[mid] == search:
             return mid
 
-        elif arr[mid] > x:
-            return binary_search(arr, low, mid - 1, x)
+        elif arr[mid] > search:
+            return binary_search(arr, low, mid - 1, search)
 
         else:
-            return binary_search(arr, mid + 1, high, x)
+            return binary_search(arr, mid + 1, high, search)
 
     else:
         return -1
 
 
 def main():
-    arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 40, 60, 400, 8000, 8001, 8002, 8003, 8004, 9000, 10000, 13000]
-    x = 50000
-    return binary_search(arr, 0, len(arr) - 1, x)
+    search = 567
+    print("Searching for", search, "in the: \n ")
+    arr = generate_and_sort_array()
+
+    return binary_search(arr, 0, len(arr) - 1, search)
 
 
 if __name__ == '__main__':
